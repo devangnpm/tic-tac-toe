@@ -25,7 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const player1Scoreboard = document.getElementById('player1Score');
+const player2Scoreboard = document.getElementById('player2Score');
+
 let totalPlayer1Score = 0;
+let totalPlayer2Score = 0;
 
 function handleBoxClick(event) {
   const gridBox = event.target;
@@ -40,12 +43,13 @@ function handleBoxClick(event) {
     if (winner === 'Player1') {
       console.log(winner + 'wins!');
       totalPlayer1Score++
-      player1Scoreboard.textContent = `Player 1 Score: ${totalPlayer1Score}`;
+      player1Scoreboard.textContent = `Player-1: ${totalPlayer1Score}`;
       resetBoard(gameBoard);
     }
     else if (winner === 'Player2') {
       console.log(winner + 'wins!');
       totalPlayer2Score++;
+      player2Scoreboard.textContent = `Player-2: ${totalPlayer2Score}`;
       resetBoard(gameBoard);
     }
 
