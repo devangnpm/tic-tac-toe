@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
 body {
     width: 100vw;
     height: 100vh;
@@ -7,15 +9,20 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
+    background-color: #222831;
+    background: linear-gradient(135deg, hsl(230, 40%, 12%), hsl(230, 20%, 7%));
+
 }
 
 h1 {
     display: flex;
-    font-size: 40px;
-    color: black;
+    font-size: 45px;
+    color: white;
     font-family: monospace;
     text-align: center;
     margin-top: -50px;
+    animation: lights 5s 750ms linear infinite;
+
 }
 
 .gridContainer {
@@ -23,9 +30,9 @@ h1 {
     flex-wrap: wrap;
     height: 700px;
     width: 700px;
-    border: 2px solid red;
     box-sizing: border-box;
     margin-top: -100px;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 }
 
 .gridBox {
@@ -34,31 +41,34 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
+    border: 2px solid #000;
     font-size: 24px;
     cursor: pointer;
     box-sizing: border-box;
-    font-family: monospace;
-    font-size: 50px;
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 80px;
+    color:#30475E;
+    font-weight: 500;
 }
 
 
 #player1Score {
     display: flex;
-    border: 2px solid red;
-    width: 220px;
+    width: 300px;
     height: 50px;
     margin-left: -1300px;
     justify-content: center;
     align-items: center;
     font-family: monospace;
     font-size: 30px;
+    animation: lights 5s 750ms linear infinite;
+    color: white;
+
 }
 
 #player2Score {
     display: flex;
-    border: 2px solid red;
-    width: 220px;
+    width: 300px;
     height: 50px;
     margin-left: 1300px;
     margin-top: -75px;
@@ -66,4 +76,55 @@ h1 {
     align-items: center;
     font-family: monospace;
     font-size: 30px;
+    animation: lights 5s 750ms linear infinite;
+    color: white;
 }
+
+@keyframes lights {
+    0% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.2),
+        0 0 0.125em hsla(320, 100%, 60%, 0.3),
+        -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    
+    30% { 
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 60%, 0.5),
+        -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    40% { 
+      color: hsl(230, 100%, 95%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 90%, 0.5),
+        -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+        0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    70% {
+      color: hsl(230, 80%, 90%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.5),
+        0 0 0.125em hsla(320, 100%, 60%, 0.5),
+        0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+        -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    
+    100% {
+      color: hsl(230, 40%, 80%);
+      text-shadow:
+        0 0 1em hsla(320, 100%, 50%, 0.2),
+        0 0 0.125em hsla(320, 100%, 60%, 0.3),
+        1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+        -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    
+  }
+  

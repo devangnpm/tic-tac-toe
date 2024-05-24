@@ -33,7 +33,7 @@ let totalPlayer2Score = 0;
 function handleBoxClick(event) {
   const gridBox = event.target;
   const index = gridBox.getAttribute('data-index');
-  
+
   if (!gridBox.textContent) {
     gridBox.textContent = currentPlayer.marker;
     gameBoard[index] = currentPlayer.marker;
@@ -41,26 +41,47 @@ function handleBoxClick(event) {
     const winner = checkWinner(gameBoard);
 
     if (winner === 'Player1') {
-      console.log(winner + 'wins!');
-      totalPlayer1Score++
+      console.log(winner + ' wins!');
+      totalPlayer1Score++;
       player1Scoreboard.textContent = `Player-1: ${totalPlayer1Score}`;
-      resetBoard(gameBoard);
-    }
-    else if (winner === 'Player2') {
-      console.log(winner + 'wins!');
+      if (totalPlayer1Score === 3) {
+        displayWinner('Player1');
+      } else {
+        resetBoard(gameBoard);
+        currentPlayer = player2;
+      }
+    } else if (winner === 'Player2') {
+      console.log(winner + ' wins!');
       totalPlayer2Score++;
       player2Scoreboard.textContent = `Player-2: ${totalPlayer2Score}`;
+      if (totalPlayer2Score === 3) {
+        displayWinner('Player2');
+      } else {
+        resetBoard(gameBoard);
+        currentPlayer = player1;
+      }
+    } else if (isBoardFull(gameBoard)) {
+      console.log("It's a draw!");
       resetBoard(gameBoard);
+      currentPlayer = currentPlayer === player1 ? player2 : player1;
+    } else {
+      currentPlayer = currentPlayer === player1 ? player2 : player1;
     }
-
-    else if (isBoardFull(gameBoard)) {
-      console.log("it's a draw!");
-      resetBoard(gameBoard); 
-    }
-
-    currentPlayer = currentPlayer === player1? player2:player1;
   }
+}
 
+function displayWinner(winner) {
+  if (winner === 'Player1') {
+    player1Scoreboard.textContent = "Player 1 Wins!";
+    player2Scoreboard.textContent = "";
+    resetBoard(gameBoard);
+    totalPlayer1Score = 0;
+  } else if (winner === 'Player2') {
+    player2Scoreboard.textContent = "Player 2 Wins!";
+    player1Scoreboard.textContent = "";
+    resetBoard(gameBoard);
+    totalPlayer2Score = 0;
+  }
 }
 
 function checkWinner(gameBoard) {
